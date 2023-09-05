@@ -1,0 +1,85 @@
+<html>
+<body>
+    <div class="login">
+       <h1>Customer Churn Prediction</h1>
+   
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <h1>
+            <legend>Is Your Customer Churned? Don't know, Predict here</legend>
+        </h1>
+        <div class="mb-3">
+            <label class="form-label">CustomerID</label>
+            <input class="form-control" type="number" name="CustomerID"
+                placeholder="Enter your Customer ID" />
+        </div>
+        <br>
+        <div class="mb-3">
+            <label class="form-label">Gender</label>
+            <select class="form-control" name="Gender" placeholder="Enter your Gender" required>
+                <option class="placeholder" selected disabled value="">Select your Gender</option>
+                <option value="Male">
+                    Male
+                </option>
+                <option value="Female">
+                    Female
+                </option>
+            </select>
+        </div>
+        <br>
+        <div class="mb-3">
+            <label class="form-label">Location</label>
+            <select class="form-control" name="Location" placeholder="Enter your Location" required>
+                <option class="placeholder" selected disabled value="">Select Location</option>
+                <option value="Los Angeles">
+                    Los Angeles
+                </option>
+                <option value="New York">
+                    New York
+                </option>
+                <option value="Miami">
+                    Miami
+                </option>
+                <option value="Chicago">
+                    Chicago
+                </option>
+                <option value="Houston">
+                    Houston
+                </option>
+            </select>
+        </div>
+        <br>
+        <div class="mb-3">
+            <label class="form-label">Age in Years</label>
+            <input class="form-control" type="number" name="Age"
+                placeholder="Enter your Age" min='0' max='100'/>
+        </div>
+        <br>
+        <div class="mb-3">
+            <label class="form-label">Subscription Length in Months</label>
+            <input class="form-control" type="number" name="Subscription_Length_Months"
+                placeholder="Enter your Subscription Length" min='1' max='25'/>
+        </div>
+        <br>
+        <div class="mb-3">
+            <label class="form-label">Monthly Bill in $</label>
+            <input class="form-control" type="number" name="Monthly_Bill" id="floatNumber" step="0.01"
+                placeholder="Enter your Monthly Bill" min='25' max='105'/>
+        </div>
+        <br>
+        <div class="mb-3">
+            <label class="form-label">Total Usage in GB</label>
+            <input class="form-control" type="number" name="Total_Usage_GB"
+                placeholder="Enter your Total Usage" min='50' max='500'/>
+        </div>
+        <br>
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Tap to Predict" required />
+        </div>
+        <br>
+        <br>
+    </form>
+    <h2>
+       THE  prediction is {{results}}
+    </h2>
+   <body>
+</html>

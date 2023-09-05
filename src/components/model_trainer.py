@@ -41,9 +41,43 @@ class ModelTrainer:
                     "K-Neighbors Classifier": KNeighborsClassifier(),
                     "Naive Bayes": GaussianNB()
             }
+
+            params = {
+            "Logistic Regression": {
+                'C': [0.01,10]
+            },
+            "Decision Tree Classifier": {
+                'max_depth': [20],
+                'min_samples_split': [2,10],
+                'min_samples_leaf': [1]
+            },
+            "Random Forest Classifier": {
+                'n_estimators': [100],
+                'max_depth': [None],
+                'min_samples_split': [5,2],
+                'min_samples_leaf': [2]
+            },
+            "Gradient Boosting Classifier": {
+                'n_estimators': [50],
+                'max_depth': [3],
+                'learning_rate': [0.01]
+            },
+            "AdaBoost Classifier": {
+                'n_estimators': [50],
+                'learning_rate': [0.1]
+            },
+            "K-Neighbors Classifier": {
+                'n_neighbors': [3],
+                'weights': ['uniform'],
+                'p': [1]
+            },
+            "Naive Bayes": {
+                'var_smoothing': [1e-9]
+            }
+            }
             
             model_report:dict=evaluate_models(X_train=X_train,y_train=y_train,X_test=X_test,y_test=y_test,
-                                             models=models)
+                                             models=models,param=params)
             
             ## To get best model score from dict
             best_model_score = max(sorted(model_report.values()))
